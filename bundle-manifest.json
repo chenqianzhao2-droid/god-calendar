@@ -8,7 +8,7 @@
     "content.mjs": "9c20bac54f344afb884f3dc0aa8d555c93721378b717c8e21620b580a8f24dfb",
     "core.mjs": "60ce38cdceeef6e0ad64cd3b6c221413cc7e309267db2d66e1979d24e86124d8",
     "download/index.html": "00c02f2ae3460e2ead0bf0df01369b0dedd118b3e217a51f9c4b6a555afdc11c",
-    "download.html": "e4239c57af6566efd66e5f84ac08934883da8b9f59b2f69525322964bfc5c0ce",
+    "download.html": "ac5c316a18878f647f04784323cae8e83f4d173a22720b92365aff80cd9f5778",
     "festivals.mjs": "d156a3048a72fdcb351179fb13b5258cfb1b9d11a9c5b6b3742da7b4a3ffc7f3",
     "icons/apple-touch-icon.png": "0beb66aecaf27cebd06f778af589866a6ede3d0bf596e7ad057d2f60cc9b7007",
     "icons/icon-192.png": "6554af68a2d7da9e4212c6a4a55d2f95515fdffc6831a80d74404b506eac655c",
@@ -17,10 +17,16 @@
     "index.html": "4f1ef2c9e4b4161cb0df3afe97b6f7156aff2fafe842c3241f6d52df8e0b758f",
     "manifest.webmanifest": "c07415aa366d6f0e5048b17881618e390e4924ffeb9f8d41473a04720fdd1db0",
     "style.css": "70e3c4e33b34a476afa7ddcdd06381c3ed8ee8b951ff1f47815657fad38eca3d",
-    "sw.js": "d33effbcf8251003b539dc448cd968a7137aea9c1fd3d5423c88d2bdaf269f6c",
+    "sw.js": "d4302143d1ff469b8131e14a52dfeb918746461286e48aa9afd9eea26179573f",
     "terms.json": "1bd15ed94ca06d104c9ea06eebfefd7cb23c6db2c19fd7ee2efd75d7d15f6a0e",
     "vendor/LUNAR-LICENSE.txt": "d9210caf1844dcf410095cea464b79800aad30dbd49df092076b9f0ddc015404",
     "vendor/lunar.js": "9750324bfe1aa63c146f8c72b1143df924466c11c8a5277d7d9225c541a18aaa",
     "visit-qr.png": "a049379180f912dfd196aa678a3878f4aadd993476307234b2bb41079b3c7abf"
+  },
+  "apk": {
+    "path": "downloads/GodCalendar_3.0.0.apk",
+    "sha256": "38823872b7353091491ddf02c9a7875977c8769757a1ce9f76068b52354241eb",
+    "version": "3.0.0-original",
+    "embeddedPosterQR": "previous chatgpt.site; explicitly disclosed"
   }
 }
