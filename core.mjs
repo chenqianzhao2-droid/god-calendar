@@ -25,3 +25,11 @@ export function dailySign(type,day,id){if(!Number.isInteger(type)||type<0||type>
 export function migrateState(value){const s=validateState(value);if(s.rulesVersion!==CONTENT.rulesVersion){s.rulesVersion=CONTENT.rulesVersion;}return s;}
 export function defaultState(){return {version:1,rulesVersion:CONTENT.rulesVersion,id:globalThis.crypto.randomUUID(),profile:null,identity:0,role:'',interest:'',goal:'',style:0,theme:'black',options:['火锅','面条','轻食','食堂'],wheels:[],signs:[],intro:false,reading:0,traditional:false};}
 export function validateState(s){if(!s||s.version!==1||typeof s.id!=='string'||!Array.isArray(s.wheels)||!Array.isArray(s.signs))throw Error('本机资料格式不正确');parseOptions(s.options.join('\n'));if(s.profile)chartFor(s.profile);if(![0,1,2,3,4,5].includes(s.identity)||![0,1,2].includes(s.style)||!['black','cream','red'].includes(s.theme))throw Error('偏好资料格式不正确');for(const w of s.wheels){if(typeof w.name!=='string')throw Error('转盘资料不正确');parseOptions(w.options.join('\n'));}for(const v of s.signs)if(typeof v.day!=='string'||!Number.isInteger(v.type)||v.type<0||v.type>4||typeof v.text!=='string'||typeof v.grade!=='string'||typeof v.task!=='string')throw Error('签文资料不正确');return s;}
+
+// Same vendored Lunar rules on every platform. Fu explicitly uses sect 2.
+export function dailyDirections(value=dateKey()) {
+ const l=dayInfo(value).solar.getLunar();
+ const defs=[['xi','喜神','Xi','传统喜庆事项的吉神方位，不代表感情结果。'],['cai','财神','Cai','传统民俗中的财神方位，不保证收益或财运。'],['fu','福神','Fu','传统祈福吉神方位，采用历法库第二流派。'],['yang','阳贵人','YangGui','传统阳贵神方位，不表示此处一定遇到贵人。'],['yin','阴贵人','YinGui','传统阴贵神方位，与阳贵神分别列出。']];
+ const bearings={'正北':0,'北':0,'东北':45,'正东':90,'东':90,'东南':135,'正南':180,'南':180,'西南':225,'正西':270,'西':270,'西北':315};
+ return {date:value,pillar:l.getDayInGanZhi(),clash:l.getDayChongDesc(),sha:l.getDaySha(),items:defs.map(([id,name,method,meaning])=>{const direction=method==='Fu'?l.getDayPositionFuDesc(2):l['getDayPosition'+method+'Desc']();return {id,name,direction,bearing:bearings[direction],gua:method==='Fu'?l.getDayPositionFu(2):l['getDayPosition'+method](),meaning};})};
+}

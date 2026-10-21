@@ -1,14 +1,14 @@
 {
-  "version": "3.0.0-compass-trial",
+  "version": "3.0.1",
   "baseURL": "https://chenqianzhao2-droid.github.io/god-calendar/",
   "qrTarget": "https://chenqianzhao2-droid.github.io/god-calendar/download.html",
   "files": {
     ".nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-    "app.mjs": "62b75f73d7610cbeee60d70411277ac1e0235ff0f156a16816dd6f9038fcc2a3",
+    "app.mjs": "0108a8e4876ac9854561d1a0840c1b045bb742045c042a20696032e40b23d8bf",
     "content.mjs": "9c20bac54f344afb884f3dc0aa8d555c93721378b717c8e21620b580a8f24dfb",
-    "core.mjs": "60ce38cdceeef6e0ad64cd3b6c221413cc7e309267db2d66e1979d24e86124d8",
+    "core.mjs": "5380988a5acc70278d53e96797e737f8a0a991e6e77379eeef8ba1f3473135f3",
     "download/index.html": "00c02f2ae3460e2ead0bf0df01369b0dedd118b3e217a51f9c4b6a555afdc11c",
-    "download.html": "bcf19272f80541d3a9ccb283f9320bfad80ecc54e0f2a1cefe42fca071e39e7e",
+    "download.html": "f3bd4605426a67c75884683bf88efdd70036103263dca8d55ec3598924104d40",
     "festivals.mjs": "d156a3048a72fdcb351179fb13b5258cfb1b9d11a9c5b6b3742da7b4a3ffc7f3",
     "icons/apple-touch-icon.png": "0beb66aecaf27cebd06f778af589866a6ede3d0bf596e7ad057d2f60cc9b7007",
     "icons/icon-192.png": "6554af68a2d7da9e4212c6a4a55d2f95515fdffc6831a80d74404b506eac655c",
@@ -16,18 +16,18 @@
     "icons/maskable-512.png": "5f840dc53245345685e7fc65dc9662b2641a43cdb07731d94e207aa37140232b",
     "index.html": "4f1ef2c9e4b4161cb0df3afe97b6f7156aff2fafe842c3241f6d52df8e0b758f",
     "manifest.webmanifest": "c07415aa366d6f0e5048b17881618e390e4924ffeb9f8d41473a04720fdd1db0",
-    "style.css": "783474de3038f6eacdb0d3ba0f334fe72c45c1d6fdaddedf9c2f2e831ae257ef",
-    "sw.js": "95e9a585a1c393ffb16998e892debda337e6af3c95e29201069d404a8c09a5b4",
+    "style.css": "6c6ad55d80b76ca4b4236fb785e3112b2d2d278adb85d3975e2b455877a5955a",
+    "sw.js": "17c1db08b4562bb04765c3d67f2ff65f1e455487762658af2f863aa694bbd51b",
     "terms.json": "1bd15ed94ca06d104c9ea06eebfefd7cb23c6db2c19fd7ee2efd75d7d15f6a0e",
     "vendor/LUNAR-LICENSE.txt": "d9210caf1844dcf410095cea464b79800aad30dbd49df092076b9f0ddc015404",
     "vendor/lunar.js": "9750324bfe1aa63c146f8c72b1143df924466c11c8a5277d7d9225c541a18aaa",
     "visit-qr.png": "a049379180f912dfd196aa678a3878f4aadd993476307234b2bb41079b3c7abf",
-    "sensor-compass.mjs": "f68abad0095692cf132cb55ce3219e373fdcd771274dae335f02e18677fc614a"
+    "sensor-compass.mjs": "063e0049ef21328ef4b67aaf4a7cea601b1306a2042ec53ab10aa13bfe1ecf7b"
   },
   "apk": {
-    "path": "downloads/GodCalendar_3.0.0.apk",
-    "sha256": "38823872b7353091491ddf02c9a7875977c8769757a1ce9f76068b52354241eb",
-    "version": "3.0.0-original",
-    "embeddedPosterQR": "previous chatgpt.site; explicitly disclosed"
+    "path": "downloads/GodCalendar_3.0.1.apk",
+    "sha256": "3c5e92dbad4e8da8f101bf78ab3e3f9665729bf362e47a4a5d0439b838d3572c",
+    "version": "3.0.1",
+    "embeddedPosterQR": "https://chenqianzhao2-droid.github.io/god-calendar/download.html"
   }
 }

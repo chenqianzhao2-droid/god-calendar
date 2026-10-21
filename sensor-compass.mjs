@@ -31,6 +31,8 @@ export function createCompassController(host, changed = () => {}) {
   const detach = () => {
     host.removeEventListener('deviceorientation', sample);
     host.removeEventListener('deviceorientationabsolute', sample);
+    host.removeEventListener('almanaccompass', nativeSample);
+    if(host.AlmanacNative?.stopCompass)host.AlmanacNative.stopCompass();
     clearTimers();
   };
   function stop(message='已停用实时罗盘 · 恢复固定方位图', status='idle') {
@@ -41,6 +43,7 @@ export function createCompassController(host, changed = () => {}) {
     if (staleTimer !== null) host.clearTimeout(staleTimer);
     staleTimer = host.setTimeout(() => stop('方向数据已中断 · 当前为固定图，请重新启用','stale'),4000);
   }
+  function nativeSample(event){if(event.detail?.unreliable){if(!state.active)return;if(initialTimer!==null)host.clearTimeout(initialTimer);initialTimer=null;staleWatch();angle=null;emit({status:'calibration',heading:null,angle:0,message:'设备方向精度不足 · 请远离磁性物体并校准'});return;}sample({...event.detail,type:'deviceorientationabsolute',absolute:true});}
   function sample(event) {
     if (!state.active) return;
     const screenAngle = host.screen?.orientation?.angle ?? (Number.isFinite(host.orientation)?host.orientation:0);
@@ -60,13 +63,21 @@ export function createCompassController(host, changed = () => {}) {
       return;
     }
     angle = smoothHeading(angle,result.heading);
-    emit({status:'live',heading:normalize(angle),angle,source:result.source,accuracy:result.accuracy,
+    emit({status:'live',heading:normalize(angle),angle,source:event.nativeSensor?'安卓系统方向传感器':result.source,accuracy:result.accuracy,
       message:result.accuracy !== null && result.accuracy > 30 ? '正在读取 · 设备报告精度较低，请远离磁性物体' : '实时方向试用中 · 固定指针指向手机顶部'});
   }
   async function start() {
     stop();
     const token = sequence;
     if (!host.isSecureContext) { stop('实时方向需要HTTPS · 当前仍是固定方位图','unavailable'); return; }
+    if(host.AlmanacNative?.startCompass){
+      relativeSeen=false;
+      host.addEventListener('almanaccompass',nativeSample);
+      emit({active:true,status:'waiting',message:'等待安卓系统方向数据 · 请竖屏平放'});
+      initialTimer=host.setTimeout(()=>stop('未收到系统方向数据 · 请检查传感器并重试','unavailable'),7000);
+      try{if(!host.AlmanacNative.startCompass())stop('设备未提供可用方向传感器 · 当前为固定图','unavailable');}catch{stop('系统方向传感器启动失败 · 当前为固定图','unavailable');}
+      return;
+    }
     const Orientation = host.DeviceOrientationEvent;
     if (!Orientation) { stop('当前浏览器未提供方向接口 · 请在手机Safari或Chrome中打开','unavailable'); return; }
     emit({status:'requesting',message:'正在请求方向权限 · 不需要定位权限'});
